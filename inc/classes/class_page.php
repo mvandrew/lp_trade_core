@@ -115,6 +115,37 @@ class Page {
 	}
 
 	/**
+	 * Вставляет в страницу пиксель Facebook
+	 *
+	 * @return void
+	 */
+	public static function facebook_pixel() {
+
+		if ( defined( "_COUNTER_FACEBOOK" ) && _COUNTER_FACEBOOK != "" ) {
+			include ( _TEMPLATES_PATH . "/facebook_pixel.php" );
+		}
+
+		// facebook_pixel
+	}
+
+	/**
+	 * Выводит пиксель ретаргетинга для формирования аудиторий ВКонтакте
+	 *
+	 * @param $key string
+	 * @return void
+	 */
+	public static function vk_pixel( $key ) {
+		global $vk_pixel;
+
+		if ( $key != '' ) {
+			$vk_pixel =  $key;
+			include ( _TEMPLATES_PATH . "/vk_pixel.php" );
+		}
+
+		// vk_pixel
+	}
+
+	/**
 	 * Выводит код эксперимента Google
 	 *
 	 * @param $key

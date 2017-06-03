@@ -9,6 +9,7 @@ define( "_CFG_PHONE",           "+7-977-748-2522" );                // Конт�
 define( "_COUNTER_YANDEX",      "" );                       // Яндекс Метрика
 define( "_COUNTER_GOOGLE",      "" );                  // Google Analytics
 define( "_COUNTER_MAIL",        "" );                        // TOP Mail.Ru
+define( "_COUNTER_FACEBOOK",    "" );                // Facebook Pixel ID
 
 
 // Данные конверсий
