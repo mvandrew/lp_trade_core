@@ -75,12 +75,44 @@
           window.getCPA_Location()
         @.action = actionURL
 
+
         # Отправка данных о конверсии
-        yaCounter44859640.reachGoal "CPA_ORDER" # Yandex
-        ga 'send', 'event', 'order', 'send' # Google
-        _tmr = window._tmr || (window._tmr = [])
-        _tmr.push { id: "2905034", type: "reachGoal", goal: "CPA_ORDER" } # Mail.ru
-        fbq 'track', 'Purchase', {value: '550.00', currency:'RUB'} # Facebook
+        try # Yandex
+          if window.goalData['yandex_counter'] != "" and window.goalData['yandex_goal'] != ""
+            ya_goal = "yaCounter" + window.goalData['yandex_counter'] +
+              ".reachGoal( '" + window.goalData['yandex_goal'] + "' );"
+            eval ya_goal
+        catch error
+          console.log "Yandex Goal error: " + error
+
+        try # Google
+          if window.goalData['google_category'] != "" and window.goalData['google_goal'] != ""
+            ga_goal = "ga( 'send', 'event', " +
+              "'" + window.goalData['google_category'] + "', " +
+              "'" + window.goalData['google_goal'] + "' );"
+            eval ga_goal
+        catch error
+          console.log "Google Goal error: " + error
+
+        try # Mail.ru
+          if window.goalData['mail_ru_counter'] != "" and window.goalData['mail_ru_goal'] != ""
+            ma_goal = "_tmr = window._tmr || (window._tmr = []); " +
+              "_tmr.push({" +
+              "   id: '" + window.goalData['mail_ru_counter'] + "'," +
+              "   type: 'reachGoal'," +
+              "   goal: '" + window.goalData['mail_ru_goal'] + "'});"
+            eval ma_goal
+        catch error
+          console.log "Mail.ru Goal error: " + error
+
+        try # Facebook
+          if window.goalData['facebook_goal'] != "" and window.goalData['goal_value'] != ""
+            fb_goal = "fbq('track', '" + window.goalData['facebook_goal'] + "', { " +
+              "value: '" + window.goalData['goal_value'] + ".00', " +
+              "currency: 'RUB' });"
+            eval fb_goal
+        catch error
+          console.log "Facebook Goal error: " + error
 
       testResult
 

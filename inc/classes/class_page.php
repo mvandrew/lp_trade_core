@@ -163,4 +163,52 @@ class Page {
 		return number_format($price, 0, ',', '&nbsp;');
 	}
 
+
+	/**
+	 * Формирует тэги для отображения иконок в шапке сайта.
+	 *
+	 * @return string
+	 */
+	public static function favicon() {
+
+		$root_path = $_SERVER['DOCUMENT_ROOT'];
+		$result = '';
+
+		$icons = array(
+			array( "type" => "image/png", "file" => "favicon.png" ),
+			array( "type" => "image/x-icon", "file" => "favicon.ico" )
+		);
+
+		foreach ( $icons as $icon ) {
+			if ( file_exists($root_path . '/' . $icon['file']) ) {
+				$result .= '<link rel="shortcut icon" type="' . $icon['type'] . '" href="/' . $icon['file'] . '">';
+			}
+		}
+
+		return $result;
+
+		// favicon
+	}
+
+
+	/**
+	 * Подключает локальную версию файла.
+	 *
+	 * @param $file_name string
+	 * @return void
+	 */
+	public static function include_template_local_file( $file_name ) {
+
+		$path = dirname($file_name);
+		$file = basename($file_name);
+
+		$local_file = $path . '/local.' . $file;
+
+		if ( file_exists($local_file) ) {
+			include ($local_file);
+		}
+
+		// include_template_local_file
+	}
+
 }

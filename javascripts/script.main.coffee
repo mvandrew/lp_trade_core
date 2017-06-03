@@ -84,38 +84,17 @@
         testResult = false
       testResult
 
-  window.initOWLCarousel = () -> # Инициализация карусели
-    $(".owl-carousel").owlCarousel({
-      smartSpeed: 300,
-      mouseDrag: false,
-      pullDrag: false,
-      dots: false,
-      navText: "",
-      responsive: {
-        0: {
-          items: 1,
-          margin: 0,
-          nav: true,
-          loop: true
-        },
-        640: {
-          items: 2,
-          margin: 20,
-          nav: true,
-          loop: true
-        },
-        960: {
-          items: 3,
-          margin: 20,
-          nav: false,
-          loop: false
-        }
-      }
-    })
-
   window.checkMobile = () -> # Проверка на предмет мобильного устройства
     if window.device.mobile()
       mobURL = "http://fly-bra.eldoradosale.ru/mob1/" + document.location.search
       window.location.replace mobURL
+
+  getGoalData = () -> # Загрузка данных о конверсиях
+    $.getJSON "/get_data.php", (data) ->
+      window.goalData = []
+      $.each data, (key, value) ->
+        window.goalData[key] = value
+
+  getGoalData()
 
 ) jQuery
