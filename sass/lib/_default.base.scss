@@ -1,0 +1,9 @@
+.container {
+  @include container($screen-md - 20);
+  @media screen and (max-width: $screen-md - 1) {
+    @include container($screen-sm - 20);
+  }
+  @media screen and (max-width: $screen-sm - 1) {
+    @include container($screen-xs - 20);
+  }
+}

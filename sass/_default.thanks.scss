@@ -1,0 +1,56 @@
+/**
+@import "lib/common";
+@import "compass/css3";
+@import "compass/utilities";
+
+.full_text {
+  @include full();
+}
+
+body {
+  font-family: $font-family-default;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+h1 {
+  font-size: 2.3em;
+  margin-top: 2.5em;
+  margin-bottom: 0.8em;
+}
+
+p {
+  margin-bottom: 1.8em;
+}
+
+.thanks {
+  .thumb {
+    @include span(4);
+    > img {
+      display: block;
+      margin-top: 3.2em;
+      width: 100%;
+      @include border-radius(50%);
+    }
+    @media screen and (max-width: $screen-md - 1) {
+      @include full();
+      > img {
+        width: 30%;
+        margin: 2em auto;
+      }
+    }
+  }
+  .confirm {
+    @include span(last 8);
+    text-align: left;
+    @media screen and (max-width: $screen-md - 1) {
+      @include full();
+      text-align: center;
+      h1 {
+        margin-top: 0;
+      }
+    }
+  }
+}
+*/

@@ -12,6 +12,10 @@ define( "_COUNTER_MAIL",        "" );                        // TOP Mail.Ru
 define( "_COUNTER_FACEBOOK",    "" );                // Facebook Pixel ID
 
 
+// Параметры экспериментов
+define( "_GA_EXPERIMENT",       false );                            // Признак инициализации механизма экспериментов
+
+
 // Данные конверсий
 define( "_GOAL_VALUE",          550 );                              // Стоимость цели
 define( "_GOAL_YANDEX",         "CPA_ORDER" );                      // Идентификатор цели для Яндекс

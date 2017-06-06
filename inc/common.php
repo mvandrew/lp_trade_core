@@ -11,6 +11,7 @@ require_once(_INC_PATH . '/functions.php' );
 require_once(_CLASS_PATH . '/class_db.php' );
 require_once(_CLASS_PATH . '/class_page.php' );
 require_once(_CLASS_PATH . '/class_config_data.php' );
+require_once(_CLASS_PATH . '/class_order.php');
 
 // Конфигурация сайта
 require_once(_INC_PATH . '/config.php' );

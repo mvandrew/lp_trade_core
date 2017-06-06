@@ -39,6 +39,10 @@
         when "p" then labelValue = getQueryParam "utm_campaign"
         when "t" then labelValue = getQueryParam "utm_content"
         when "m" then labelValue = getQueryParam "utm_medium"
+    if labelName == "s" and /mtproxy\.yandex\.net$/.test(labelValue)
+      console.log labelValue
+      labelValue = document.location.hostname
+      console.log labelValue
     res = labelValue
 
   window.getCPA_Location = () -> # Формирование строки меток для CPA сети

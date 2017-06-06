@@ -9,6 +9,76 @@ defined("_IN_INDEX") or die("Access Denied");
 class Page {
 
 	/**
+	 * Признак подключения POPUP-окна при попытке убрать курсор с сайта
+	 *
+	 * @var bool
+	 */
+	public $popup_enabled;
+
+	/**
+	 * Кнопка заказа обратного звонка оператора
+	 *
+	 * @var bool
+	 */
+	public $callback_enabled;
+
+	/**
+	 * Задержка в милисекундах перед появлением кнопки заказа обратного звонка оператора.
+	 *
+	 * По-умолчанию: 3 секунды.
+	 *
+	 * @var int
+	 */
+	public $callback_timeout;
+
+	/**
+	 * Пол оператора на кнопке обратного звонка:
+	 *   0 - все (по-умолчанию);
+	 *   1 - мужчины;
+	 *   2 - женщины.
+	 *
+	 * @var int
+	 */
+	public $callback_gender;
+
+	/**
+	 * Экземпляр рабочей страницы
+	 *
+	 * @var Page
+	 */
+	private static $INSTANCE = null;
+
+	/**
+	 * Page constructor.
+	 */
+	public function __construct() {
+
+		$this->popup_enabled = false;
+		$this->callback_enabled = false;
+		$this->callback_timeout = 3000;
+		$this->callback_gender = 0;
+
+		// __construct
+	}
+
+	/**
+	 * Возвращает экземпляр текущего класса.
+	 * При необходимости создаёт его.
+	 *
+	 * @return Page
+	 */
+	public static function get_instance() {
+
+		if ( self::$INSTANCE == null ) {
+			self::$INSTANCE = new Page();
+		}
+
+		return self::$INSTANCE;
+
+		// get_instance
+	}
+
+	/**
 	 * Открывает обработку страницы
 	 *
 	 * @return void
@@ -154,8 +224,11 @@ class Page {
 	public static function google_experiment($key) {
 
 		global $ge_key;
-		$ge_key = $key;
-		include (_TEMPLATES_PATH . "/google_experiment.php");
+
+		if ( defined("_GA_EXPERIMENT") && _GA_EXPERIMENT && $key != "" ) {
+			$ge_key = $key;
+			include( _TEMPLATES_PATH . "/google_experiment.php" );
+		}
 
 		// google_experiment
 	}

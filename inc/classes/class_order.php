@@ -205,4 +205,19 @@ class Order {
 
 	} // process
 
+	/**
+	 * Отображает скрытые поля формы заказа
+	 *
+	 * @return void
+	 */
+	public static function order_form_fields() {
+
+		$file_name = _TEMPLATES_PATH . "/order.fields.php";
+		if ( file_exists($file_name) ) {
+			include ($file_name);
+		}
+
+		// order_form_fields
+	}
+
 }

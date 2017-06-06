@@ -1,0 +1,15 @@
+// Requirements
+// ============
+
+@import "susy";
+
+$susy: (
+  columns: 12,
+  gutters: 1/2,
+  gutter-position: inside,
+  debug: (
+    image: hide,
+    output: overlay,
+    toggle: top right,
+  ),
+);
