@@ -98,7 +98,6 @@ class Order {
 	 * Order constructor.
 	 */
 	public function __construct() {
-		$ff = new HttpResponse();
 
 		// Получение данных заказчика
 		$this->cust_name = Page::get_query_value("name");
