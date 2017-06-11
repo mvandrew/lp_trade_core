@@ -78,15 +78,33 @@ class Order {
 	public $cpa;
 
 	/**
+	 * Determination of the real IP address.
+	 *
+	 * @return string
+	 */
+	public static function get_real_ip() {
+
+		$res = $_SERVER["REMOTE_ADDR"];
+		if ( $res == '127.0.0.1' && @$_SERVER['HTTP_X_REAL_IP'] != '' ) {
+			$res = @$_SERVER['HTTP_X_REAL_IP'];
+		}
+
+		return $res;
+
+		// get_real_ip
+	}
+
+	/**
 	 * Order constructor.
 	 */
 	public function __construct() {
+		$ff = new HttpResponse();
 
 		// Получение данных заказчика
 		$this->cust_name = Page::get_query_value("name");
 		$this->cust_phone = Page::get_query_value("phone");
 		$this->key = Page::get_query_value("mode");
-		$this->ip_address = $_SERVER["REMOTE_ADDR"];
+		$this->ip_address = self::get_real_ip();
 		$this->item = Page::get_query_value("item");
 		$this->site = $_SERVER["HTTP_HOST"];
 		$this->is_fake = $this->key == "" ? 1 : 0;
