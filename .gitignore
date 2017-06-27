@@ -1,6 +1,8 @@
 /*
 
 !.gitignore
+!.gitattributes
+!.travis.yml
 !config.rb
 !order.php
 !privacy-policy.php

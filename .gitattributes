@@ -1,0 +1,13 @@
+# Auto detect text files and perform LF normalization
+*           text=auto
+
+*.jpg       -text
+*.jpeg      -text
+*.png       -text
+
+# Source files
+*.php       diff=php
+*.scss      diff=css
+*.css       diff=css
+*.coffee    diff=java
+*.js        diff=java
